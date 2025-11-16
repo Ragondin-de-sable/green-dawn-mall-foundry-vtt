@@ -9,12 +9,12 @@
         "hobby": ""
       },
       "equipments": {
-        "equip1": "",
-        "equip2": "",
-        "equip3": "",
-        "equip4": "",
-        "equip5": "",
-        "equip6": ""
+        "equip1": { "name": "", "fromTheMall": false},
+        "equip2": { "name": "", "fromTheMall": false},
+        "equip3": { "name": "", "fromTheMall": false},
+        "equip4": { "name": "", "fromTheMall": false},
+        "equip5": { "name": "", "fromTheMall": false},
+        "equip6": { "name": "", "fromTheMall": false}
       },
       "harms": {
         "lesser": {

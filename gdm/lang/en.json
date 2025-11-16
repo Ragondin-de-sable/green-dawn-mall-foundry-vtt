@@ -42,6 +42,8 @@
   "SIMPLE.TraitSchool": "School",
   "SIMPLE.TraitHobby": "Hobby",
   "SIMPLE.Equipments": "Equipments",
+  "SIMPLE.EquipmentName": "Name",
+  "SIMPLE.EquipmentFromTheMall": "From the Mall",
   "SIMPLE.Equipment": "Equipment",
   "SIMPLE.Harms": "Harms",
   "SIMPLE.HarmLesser": "Lesser (-1 die)",
