@@ -1,0 +1,43 @@
+{
+  "Actor": {
+    "types": ["character"],
+    "htmlFields": ["notes"],
+    "character": {
+      "traits": {
+        "personality": "",
+        "school": "",
+        "hobby": ""
+      },
+      "equipments": {
+        "equip1": "",
+        "equip2": "",
+        "equip3": "",
+        "equip4": "",
+        "equip5": "",
+        "equip6": ""
+      },
+      "harms": {
+        "lesser": {
+          "first": "", 
+          "second": ""
+        },
+        "moderate": {
+          "first": "", 
+          "second": ""
+        },
+        "severe": ""
+      }
+    }
+  },
+  "Item": {
+    "types": ["item"],
+    "htmlFields": ["description"],
+    "item": {
+      "description": "",
+      "quantity": 1,
+      "weight": 0,
+      "attributes": {},
+      "groups": {}
+    }
+  }
+}

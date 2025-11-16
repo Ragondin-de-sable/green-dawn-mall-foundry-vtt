@@ -1,0 +1,157 @@
+<form class="flexcol {{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100" />
+        <div class="header-fields">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
+            </h1>
+            <!-- <div class="resource">
+                <input type="number" name="system.health.value" value="{{systemData.health.value}}"/>
+                <span> / </span>
+                <input type="number" name="system.health.max" value="{{systemData.health.max}}"/>
+            </div>
+            <div class="resource">
+                <input type="number" name="system.power.value" value="{{systemData.power.value}}"/>
+                <span> / </span>
+                <input type="number" name="system.power.max" value="{{systemData.power.max}}"/>
+            </div> -->
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="details">{{ localize "SIMPLE.Details" }}</a>
+        <a class="item" data-tab="rules">{{ localize "SIMPLE.Rules" }}</a>
+        <a class="item" data-tab="notes">{{ localize "SIMPLE.Notes" }}</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+
+        {{!-- Details Tab --}}
+        <div class="tab details" data-group="primary" data-tab="details">
+            <div>
+                <h2>{{ localize "SIMPLE.Traits" }}</h2>
+                <ul>
+                    <li><input name="trait-personality" type="text" value="{{systemData.traits.personality}}" placeholder="{{localize "SIMPLE.TraitPersonality"}}" /></li>
+                    <li><input name="trait-school" type="text" value="{{systemData.traits.school}}" placeholder="{{localize "SIMPLE.TraitSchool"}}" /></li>
+                    <li><input name="trait-hobby" type="text" value="{{systemData.traits.hobby}}" placeholder="{{localize "SIMPLE.TraitHobby"}}" /></li>
+                </ul>
+            </div>
+            <div>
+                <h2>{{ localize "SIMPLE.Equipments" }}</h2>
+                <ol>
+                    <li><input name="system.equipments.equip1" type="text" value="{{systemData.equipments.equip1}}" placeholder="{{localize "SIMPLE.Equipment"}}" /></li>
+                    <li><input name="system.equipments.equip2" type="text" value="{{systemData.equipments.equip2}}" placeholder="{{localize "SIMPLE.Equipment"}}" /></li>
+                    <li><input name="system.equipments.equip3" type="text" value="{{systemData.equipments.equip3}}" placeholder="{{localize "SIMPLE.Equipment"}}" /></li>
+                    <li><input name="system.equipments.equip4" type="text" value="{{systemData.equipments.equip4}}" placeholder="{{localize "SIMPLE.Equipment"}}" /></li>
+                    <li><input name="system.equipments.equip5" type="text" value="{{systemData.equipments.equip5}}" placeholder="{{localize "SIMPLE.Equipment"}}" /></li>
+                    <li><input name="system.equipments.equip6" type="text" value="{{systemData.equipments.equip6}}" placeholder="{{localize "SIMPLE.Equipment"}}" /></li>
+                </ol>
+            </div>
+            <div>
+                <h2>{{ localize "SIMPLE.Harms" }}</h2>
+                <fieldset>
+                    <legend>{{ localize "SIMPLE.HarmLesser" }}</legend>
+                    <input name="system.harms.lesser.first" type="text" value="{{systemData.harms.lesser.first}}" placeholder="" />
+                    <input name="system.harms.lesser.second" type="text" value="{{systemData.harms.lesser.second}}" placeholder="" />
+                </fieldset>
+                <fieldset>
+                    <legend>{{ localize "SIMPLE.HarmModerate" }}</legend>
+                    <input name="system.harms.moderate.first" type="text" value="{{systemData.harms.moderate.first}}" placeholder="" />
+                    <input name="system.harms.moderate.second" type="text" value="{{systemData.harms.moderate.second}}" placeholder="" />
+                </fieldset>
+                <fieldset>
+                    <legend>{{ localize "SIMPLE.HarmSevere" }}</legend>
+                    <input name="system.harms.severe" type="text" value="{{systemData.harms.severe}}" placeholder="" />
+                </fieldset>
+            </div>
+        </div>
+
+        {{!-- Rules Tab --}}
+        <div class="tab rules" data-group="primary" data-tab="rules">
+            <p><b>{{ localize "SIMPLE.Rule.ActionRollTitle" }}</b> {{ localize "SIMPLE.Rule.ActionRoll" }}</p>
+            <p><b>{{ localize "SIMPLE.Rule.RemoveDieTitle" }}</b> {{ localize "SIMPLE.Rule.RemoveDie" }}</p>
+            <p><b>{{ localize "SIMPLE.Rule.EquipmentTitle" }}</b> {{ localize "SIMPLE.Rule.Equipment" }}</p>
+            <p><b>{{ localize "SIMPLE.Rule.ObjectFromTheMallTitle" }}</b> {{ localize "SIMPLE.Rule.ObjectFromTheMall" }}</p>
+            <p><b>{{ localize "SIMPLE.Rule.ZeroOrNegativeDiceTitle" }}</b> {{ localize "SIMPLE.Rule.ZeroOrNegativeDice" }}</p>
+            <!-- <ol class="item-list">
+                {{#each data.items as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+                    <h4 class="item-name">{{item.name}}</h4>
+                    {{!-- Iterate through all attributes on the item and output buttons for any that are formula. --}}
+                    <div class="item-buttons">
+                        {{#each item.system.attributes as |itemAttr key|}}
+                        {{#if itemAttr.dtype}}
+                            {{#if itemAttr.isFormula}}
+                                {{!-- Use the items.name.key format for shorthand. --}}
+                                {{#if ../../shorthand}}
+                                <button class="item-button rollable" data-roll="@items.{{slugify item.name}}.{{key}}" data-label="{{ itemAttr.label }}"
+                                    title="{{itemAttr.value}}">{{itemAttr.label}}</button>
+                                {{!-- Use the items.name.attributes.key.value format otherwise. --}}
+                                {{else}}
+                                <button class="item-button rollable"
+                                    data-roll="@items.{{slugify item.name}}.attributes.{{key}}.value" data-label="{{ itemAttr.label }}"
+                                    title="{{itemAttr.value}}">{{itemAttr.label}}</button>
+                                {{/if}}
+                            {{/if}}
+                        {{else}}
+                            {{#each itemAttr as |itemGroupedAttr groupedKey|}}
+                                {{#if itemGroupedAttr.isFormula}}
+                                    {{!-- Use the items.name.key format for shorthand. --}}
+                                    {{#if ../../../shorthand}}
+                                    <button class="item-button rollable" data-roll="@items.{{slugify item.name}}.{{key}}.{{groupedKey}}" data-label="{{ itemGroupedAttr.label }}"
+                                        title="{{itemGroupedAttr.value}}">{{itemGroupedAttr.label}}</button>
+                                    {{!-- Use the items.name.attributes.key.value format otherwise. --}}
+                                    {{else}}
+                                    <button class="item-button rollable"
+                                        data-roll="@items.{{slugify item.name}}.attributes.{{key}}.{{groupedKey}}.value" data-label="{{ itemGroupedAttr.label }}"
+                                        title="{{itemGroupedAttr.value}}">{{itemGroupedAttr.label}}</button>
+                                    {{/if}}
+                                {{/if}}
+                            {{/each}}
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                    <div class="item-controls">
+                        <a class="item-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>
+                        <a class="item-control" title="{{ localize "SIMPLE.ItemDelete" }}" data-action="delete"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+            <p>
+                <a class="item-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
+            </p> -->
+        </div>
+
+        {{!-- Notes Tab --}}
+        <div class="tab notes" data-group="primary" data-tab="notes">
+            {{editor biographyHTML target="system.biography" button=true editable=editable engine="prosemirror"}}
+
+            <!-- <header class="attributes-header flexrow">
+                <span class="attribute-key">{{localize "SIMPLE.AttributeKey"}}</span>
+                <span class="attribute-value">{{localize "SIMPLE.AttributeValue"}}</span>
+                <span class="attribute-label">{{localize "SIMPLE.AttributeLabel"}}</span>
+                <span class="attribute-dtype">{{localize "SIMPLE.AttributeDtype"}}</span>
+                <a class="attribute-control" data-action="create" data-group="{{group}}"><i class="fas fa-plus"></i></a>
+            </header>
+
+            {{!-- Render the attribute list partial. --}}
+            {{> "systems/worldbuilding/templates/parts/sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
+
+            {{!-- Render the grouped attributes partial and control. --}}
+            <div class="groups">
+                {{> "systems/worldbuilding/templates/parts/sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
+
+                <div class="group-controls flexrow">
+                    <input class="group-prefix" type="text" value=""/>
+                    <a class="button group-control" data-action="create-group"><i class="fas fa-plus"></i>Add Attribute Group</a>
+                </div>
+            </div> -->
+        </div> 
+    </section>
+</form>
