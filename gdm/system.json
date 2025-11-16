@@ -21,9 +21,9 @@
       "path": "lang/en.json"
     },
     {
-      "lang": "pl",
-      "name": "Polski",
-      "path": "lang/pl.json"
+      "lang": "fr",
+      "name": "French",
+      "path": "lang/fr.json"
     }
   ],
   "compatibility": {
