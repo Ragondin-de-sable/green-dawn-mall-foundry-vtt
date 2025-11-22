@@ -34,6 +34,6 @@
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
   "secondaryTokenAttribute": "power",
-  "manifest": "https://raw.githubusercontent.com/foundryvtt/worldbuilding/master/system.json",
+  "manifest": "https://github.com/Ragondin-de-sable/green-dawn-mall-foundry-vtt/tree/main/gdm/system.json",
   "download": "https://github.com/foundryvtt/worldbuilding/archive/refs/tags/release-082.zip"
 }
