@@ -62,5 +62,10 @@
   "SIMPLE.Rule.ObjectFromTheMallTitle": "Objects from the Mall:",
   "SIMPLE.Rule.ObjectFromTheMall": "they break on a 5 or a 6 (roll 1d6, +1d if I don't take good care of them, -1d if I'm careful)",
   "SIMPLE.Rule.ZeroOrNegativeDiceTitle": "Zero or negative dice:",
-  "SIMPLE.Rule.ZeroOrNegativeDice": "roll 2d6, keep the lowest"
+  "SIMPLE.Rule.ZeroOrNegativeDice": "roll 2d6, keep the lowest",
+
+  "SIMPLE.RollD6": "Action Roll",
+  "SIMPLE.ActionDialog.Title": "Action Roll",
+  "SIMPLE.ActionDialog.Confirm": "Roll dice",
+  "SIMPLE.ActionDialog.Cancel": "Cancel"
 }

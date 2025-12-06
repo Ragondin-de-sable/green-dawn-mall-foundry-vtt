@@ -62,5 +62,10 @@
   "SIMPLE.Rule.ObjectFromTheMallTitle": "Objects du centre : ",
   "SIMPLE.Rule.ObjectFromTheMall": "se cassent sur un 5 ou un 6 (lancer 1d6, +1d si je n’en prends pas soin, -1d si je fais attention).",
   "SIMPLE.Rule.ZeroOrNegativeDiceTitle": "Zéro dé ou négatif : ",
-  "SIMPLE.Rule.ZeroOrNegativeDice": "lancer 2d6, prendre le moins bon."
+  "SIMPLE.Rule.ZeroOrNegativeDice": "lancer 2d6, prendre le moins bon.",
+
+  "SIMPLE.RollD6": "Jet d'action",
+  "SIMPLE.ActionDialog.Title": "Jet d'action",
+  "SIMPLE.ActionDialog.Confirm": "Lancer les dés",
+  "SIMPLE.ActionDialog.Cancel": "Annuler"
 }

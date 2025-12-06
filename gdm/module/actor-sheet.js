@@ -45,24 +45,140 @@ export class SimpleActorSheet extends ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if ( !this.isEditable ) return;
 
+    html.find("#roll-d6").click(this.openRollDialog.bind(this.actor, this.actor.getRollData()));
     // Attribute Management
-    html.find(".attributes").on("click", ".attribute-control", EntitySheetHelper.onClickAttributeControl.bind(this));
-    html.find(".groups").on("click", ".group-control", EntitySheetHelper.onClickAttributeGroupControl.bind(this));
-    html.find(".attributes").on("click", "a.attribute-roll", EntitySheetHelper.onAttributeRoll.bind(this));
+    // html.find(".attributes").on("click", ".attribute-control", EntitySheetHelper.onClickAttributeControl.bind(this));
+    // html.find(".groups").on("click", ".group-control", EntitySheetHelper.onClickAttributeGroupControl.bind(this));
+    // html.find(".attributes").on("click", "a.attribute-roll", EntitySheetHelper.onAttributeRoll.bind(this));
 
     // Item Controls
-    html.find(".item-control").click(this._onItemControl.bind(this));
-    html.find(".items .rollable").on("click", this._onItemRoll.bind(this));
+    // html.find(".item-control").click(this._onItemControl.bind(this));
+    // html.find(".items .rollable").on("click", this._onItemRoll.bind(this));
 
     // Add draggable for Macro creation
-    html.find(".attributes a.attribute-roll").each((i, a) => {
-      a.setAttribute("draggable", true);
-      a.addEventListener("dragstart", ev => {
-        let dragData = ev.currentTarget.dataset;
-        ev.dataTransfer.setData('text/plain', JSON.stringify(dragData));
-      }, false);
-    });
+    // html.find(".attributes a.attribute-roll").each((i, a) => {
+    //   a.setAttribute("draggable", true);
+    //   a.addEventListener("dragstart", ev => {
+    //     let dragData = ev.currentTarget.dataset;
+    //     ev.dataTransfer.setData('text/plain', JSON.stringify(dragData));
+    //   }, false);
+    // });
   }
+
+  openRollDialog(actor, rollData){
+    const dialogContent = `  
+      <div>
+        <i class="fa-solid fa-bandage"></i> Les blessures seront prises en compte automatiquement.
+      </div>    
+      <hr/>
+      <div>
+        J'utilise l'un de mes traits ? 
+        <input type="radio" id="use-trait-yes" name="use-trait" value="yes"/>
+        <label for="use-trait-yes">Oui</label>
+        <input type="radio" id="use-trait-no" name="use-trait" value="no" checked/>
+        <label for="use-trait-no">Non</label>
+      </div>
+
+      <div>
+        J'utilise un de mes objets ? 
+        <input type="radio" id="use-object-yes" name="use-object" value="yes"/>
+        <label for="use-object-yes">Oui</label>
+        <input type="radio" id="use-object-no" name="use-object" value="no" checked/>
+        <label for="use-object-no">Non</label>
+      
+      <div>
+        C'est une circonstance avantageuse ? 
+        <input type="radio" id="advantageous-circumstance-yes" name="advantageous-circumstance" value="yes"/>
+        <label for="advantageous-circumstance-yes">Oui</label>
+        <input type="radio" id="advantageous-circumstance-no" name="advantageous-circumstance" value="no" checked/>
+        <label for="advantageous-circumstance-no">Non</label>
+      </div>
+
+      <hr />
+
+      <div>
+        Un autre PJ m'aide avec l'un de ses objets ? 
+        <input type="radio" id="other-pj-help-object-yes" name="other-pj-help-object" value="yes"/>
+        <label for="other-pj-help-object-yes">Oui</label>
+        <input type="radio" id="other-pj-help-object-no" name="other-pj-help-object" value="no" checked/>
+        <label for="other-pj-help-object-no">Non</label>
+      </div>
+
+      <div>
+        Un autre PJ m'aide avec l'un de ses traits ? 
+        <input type="radio" id="other-pj-help-trait-yes" name="other-pj-help-trait" value="yes"/>
+        <label for="other-pj-help-trait-yes">Oui</label>
+        <input type="radio" id="other-pj-help-trait-no" name="other-pj-help-trait" value="no" checked/>
+        <label for="other-pj-help-trait-no">Non</label>
+      </div>
+      
+      <hr />`;
+
+    new Dialog({
+      title: game.i18n.localize("SIMPLE.ActionDialog.Title"),
+      content: dialogContent,
+      buttons: {
+        confirm: {
+          icon: '<i class="fa-solid fa-dice"></i>',
+          label: game.i18n.localize("SIMPLE.ActionDialog.Confirm"),
+          callback: (html) => confirmCallback(html, actor.harms),
+        },
+        cancel: {
+          icon: '<i class="fa-solid fa-ban"></i>',
+          label: game.i18n.localize("SIMPLE.ActionDialog.Cancel"),
+        }
+      }
+    }).render(true);
+
+    function confirmCallback(html, harms) {
+      var nbDice = getNbDice(html, harms);
+  
+      let r = new Roll(nbDice+"d6", rollData);
+
+      return r.toMessage({
+        user: game.user.id,
+        speaker: ChatMessage.getSpeaker({ actor: actor }),
+        flavor: `<h2>${actor.name}</h2><h3>${game.i18n.localize("SIMPLE.RollD6")}</h3>`
+      });
+    }
+
+    function getNbDice(html, harms) {
+      var nbDice = 1;
+
+      if(harms.lesser.first.trim() + harms.lesser.second.trim() !== "")
+        nbDice--;
+      if(harms.moderate.first.trim() + harms.moderate.second.trim() !== "")
+        nbDice--;
+      if(harms.severe.trim() !== "")
+        nbDice--;
+
+      
+      if (html.find("input#use-trait-yes").is(":checked"))
+        nbDice++;
+
+      if (html.find("input#use-object-yes").is(":checked"))
+        nbDice++;
+
+      if (html.find("input#advantageous-circumstance-yes").is(":checked"))
+        nbDice++;
+
+      if (html.find("input#other-pj-help-object-yes").is(":checked"))
+        nbDice++;
+
+      if (html.find("input#other-pj-help-trait-yes").is(":checked"))
+        nbDice++;
+      
+      if(nbDice > 4)
+        nbDice = 4;
+
+      if(nbDice <= 0)
+        nbDice = 1;
+
+      return nbDice;
+    }
+  }
+ 
+ 
 
   /* -------------------------------------------- */
 
