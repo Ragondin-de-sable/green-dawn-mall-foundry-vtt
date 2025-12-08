@@ -142,10 +142,14 @@ export class SimpleActorSheet extends ActorSheet {
 
     async function confirmCallback(html, simpleActor) {
       var nbDice = getNbDice(html, simpleActor.system.harms);
-  
-      let r = new Roll(nbDice+"d6", simpleActor.getRollData());
+
+      let r = nbDice > 0
+        ? new Roll(nbDice+"d6", simpleActor.getRollData())
+        : new Roll("2d6kl", simpleActor.getRollData());
+
       const rollResult = await r.evaluate();
-      const isSuccess = rollResult.terms[0].results.find(e => e.result >= 5) !== undefined;
+      
+      const isSuccess = rollResult.terms[0].results.find(e => e.active && e.result >= 5) !== undefined;
 
       return r.toMessage({
         user: game.user.id,
@@ -183,11 +187,6 @@ export class SimpleActorSheet extends ActorSheet {
       
       if(nbDice > 4)
         nbDice = 4;
-
-      if(nbDice <= 0)
-        nbDice = 1;
-
-      //todo other rules
 
       return nbDice;
     }
