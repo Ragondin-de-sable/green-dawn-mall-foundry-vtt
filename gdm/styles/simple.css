@@ -1,4 +1,5 @@
-.worldbuilding {
+.worldbuilding,
+.dialog {
   --color-shadow-primary: #32471B;
   --color-scrollbar: var(--color-shadow-primary);
   --color-underline-header: var(--color-shadow-primary);
@@ -10,17 +11,24 @@
   /* Sheet Tabs */
   /* Notes */
 }
-.worldbuilding .window-content {
+.worldbuilding .window-content,
+.dialog .window-content {
   padding: 5px;
   overflow-y: hidden;
   background-image: none !important;
   background-color: #648E35 !important;
   font-family: cursive;
 }
-.worldbuilding form {
+.worldbuilding .dialog-buttons .confirm,
+.dialog .dialog-buttons .confirm {
+  background: var(--color-border-light-primary) !important;
+}
+.worldbuilding form,
+.dialog form {
   height: 100%;
 }
-.worldbuilding .sheet-header {
+.worldbuilding .sheet-header,
+.dialog .sheet-header {
   flex: 0 0 100px;
   overflow: hidden;
   display: flex;
@@ -29,82 +37,101 @@
   justify-content: flex-start;
   margin-bottom: 10px;
 }
-.worldbuilding .sheet-header .profile-img {
+.worldbuilding .sheet-header .profile-img,
+.dialog .sheet-header .profile-img {
   flex: 0 0 100px;
   height: 100px;
   margin-right: 10px;
   border-color: var(--color-border-light-primary);
 }
-.worldbuilding .sheet-header .header-fields {
+.worldbuilding .sheet-header .header-fields,
+.dialog .sheet-header .header-fields {
   flex: 1;
   height: 100px;
 }
-.worldbuilding .sheet-header h1.charname {
+.worldbuilding .sheet-header h1.charname,
+.dialog .sheet-header h1.charname {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
 }
-.worldbuilding .sheet-header h1.charname input {
+.worldbuilding .sheet-header h1.charname input,
+.dialog .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
-.worldbuilding .resource {
+.worldbuilding .resource,
+.dialog .resource {
   width: 50%;
   height: 40px;
   margin-top: 10px;
   float: left;
   text-align: center;
 }
-.worldbuilding .resource input {
+.worldbuilding .resource input,
+.dialog .resource input {
   width: 100px;
   height: 28px;
 }
-.worldbuilding .tabs {
+.worldbuilding .tabs,
+.dialog .tabs {
   flex: 0 0 40px;
   font-size: large;
   border-top: none !important;
   background-color: #648E35;
 }
-.worldbuilding .tabs .item {
+.worldbuilding .tabs .item,
+.dialog .tabs .item {
   line-height: 40px;
   font-weight: bold;
 }
-.worldbuilding .tabs .item.active {
+.worldbuilding .tabs .item.active,
+.dialog .tabs .item.active {
   background-color: var(--color-border-light-primary);
 }
-.worldbuilding .sheet-body {
+.worldbuilding .sheet-body,
+.dialog .sheet-body {
   overflow: hidden;
 }
-.worldbuilding .sheet-body .tab {
+.worldbuilding .sheet-body .tab,
+.dialog .sheet-body .tab {
   height: 100%;
   overflow-y: auto;
 }
-.worldbuilding .sheet-body ul {
+.worldbuilding .sheet-body ul,
+.dialog .sheet-body ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.worldbuilding .sheet-body ul li {
+.worldbuilding .sheet-body ul li,
+.dialog .sheet-body ul li {
   margin-bottom: 5px;
 }
-.worldbuilding .sheet-body table td {
+.worldbuilding .sheet-body table td,
+.dialog .sheet-body table td {
   text-align: center;
   vertical-align: middle;
 }
-.worldbuilding .sheet-body table tr:nth-child(even) {
+.worldbuilding .sheet-body table tr:nth-child(even),
+.dialog .sheet-body table tr:nth-child(even) {
   background-color: inherit;
 }
-.worldbuilding .sheet-body fieldset {
+.worldbuilding .sheet-body fieldset,
+.dialog .sheet-body fieldset {
   border: none;
   display: flex;
 }
 .worldbuilding .editor,
-.worldbuilding .editor-content {
+.dialog .editor,
+.worldbuilding .editor-content,
+.dialog .editor-content {
   height: 100%;
 }
-.worldbuilding .notes {
+.worldbuilding .notes,
+.dialog .notes {
   position: relative;
 }
 .worldbuilding.sheet.actor {

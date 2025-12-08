@@ -67,5 +67,15 @@
   "SIMPLE.RollD6": "Jet d'action",
   "SIMPLE.ActionDialog.Title": "Jet d'action",
   "SIMPLE.ActionDialog.Confirm": "Lancer les dés",
-  "SIMPLE.ActionDialog.Cancel": "Annuler"
+  "SIMPLE.ActionDialog.Cancel": "Annuler",
+  "SIMPLE.ActionDialog.Harms": "Les blessures seront prises en compte automatiquement.",
+  "SIMPLE.ActionDialog.Traits": "J'utilise l'un de mes traits ?",
+  "SIMPLE.ActionDialog.Equipments": "J'utilise l'un de mes objets ?",
+  "SIMPLE.ActionDialog.AdvantageousCircumstance": "Y a-t-il une circonstance avantageuse ?",
+  "SIMPLE.ActionDialog.OtherPJHelpTrait": "Un autre PJ m'aide avec l'un de ses traits ?",
+  "SIMPLE.ActionDialog.OtherPJHelpObject": "Un autre PJ m'aide avec l'un de ses objets ?",
+  "SIMPLE.ActionDialog.Yes": "Oui",
+  "SIMPLE.ActionDialog.No": "Non",
+  "SIMPLE.ActionDialog.Success": "Succès",
+  "SIMPLE.ActionDialog.Failure": "Échec"
 }

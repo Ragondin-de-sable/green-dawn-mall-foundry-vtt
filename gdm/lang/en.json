@@ -67,5 +67,15 @@
   "SIMPLE.RollD6": "Action Roll",
   "SIMPLE.ActionDialog.Title": "Action Roll",
   "SIMPLE.ActionDialog.Confirm": "Roll dice",
-  "SIMPLE.ActionDialog.Cancel": "Cancel"
+  "SIMPLE.ActionDialog.Cancel": "Cancel",
+  "SIMPLE.ActionDialog.Harms": "Harms will be taken into account automatically.",
+  "SIMPLE.ActionDialog.Traits": "I use one of my traits?",
+  "SIMPLE.ActionDialog.Equipments": "I use one of my objects?",
+  "SIMPLE.ActionDialog.AdvantageousCircumstance": "Is there an advantageous circumstance?",
+  "SIMPLE.ActionDialog.OtherPJHelpTrait": "Another PC is helping me with one of their traits?",
+  "SIMPLE.ActionDialog.OtherPJHelpObject": "Another PC is helping me with one of their objects?",
+  "SIMPLE.ActionDialog.Yes": "Yes",
+  "SIMPLE.ActionDialog.No": "No",
+  "SIMPLE.ActionDialog.Success": "Success",
+  "SIMPLE.ActionDialog.Failure": "Failure"
 }
