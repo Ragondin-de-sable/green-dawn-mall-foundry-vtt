@@ -74,9 +74,9 @@ export class SimpleActorSheet extends ActorSheet {
       <div style="display: flex;justify-content: space-between;">
         <label>${game.i18n.localize("SIMPLE.ActionDialog.Traits")}</label>
         <span>
-          <input type="radio" id="use-trait-yes" name="use-trait" value="yes"/>
+          <input type="radio" id="use-trait-yes" name="use-trait" value="1"/>
           <label for="use-trait-yes">${game.i18n.localize("SIMPLE.ActionDialog.Yes")}</label>
-          <input type="radio" id="use-trait-no" name="use-trait" value="no" checked/>
+          <input type="radio" id="use-trait-no" name="use-trait" value="0" checked/>
           <label for="use-trait-no">${game.i18n.localize("SIMPLE.ActionDialog.No")}</label>
         </span>
       </div>
@@ -84,18 +84,18 @@ export class SimpleActorSheet extends ActorSheet {
       <div style="display: flex;justify-content: space-between;">
         <label>${game.i18n.localize("SIMPLE.ActionDialog.Equipments")}</label>
         <span>
-          <input type="radio" id="use-object-yes" name="use-object" value="yes"/>
+          <input type="radio" id="use-object-yes" name="use-object" value="1"/>
           <label for="use-object-yes">${game.i18n.localize("SIMPLE.ActionDialog.Yes")}</label>
-          <input type="radio" id="use-object-no" name="use-object" value="no" checked/>
+          <input type="radio" id="use-object-no" name="use-object" value="0" checked/>
           <label for="use-object-no">${game.i18n.localize("SIMPLE.ActionDialog.No")}</label>
         </span>
       </div>
       <div style="display: flex;justify-content: space-between;">
         <label>${game.i18n.localize("SIMPLE.ActionDialog.AdvantageousCircumstance")}</label>
         <span>
-          <input type="radio" id="advantageous-circumstance-yes" name="advantageous-circumstance" value="yes"/>
+          <input type="radio" id="advantageous-circumstance-yes" name="advantageous-circumstance" value="1"/>
           <label for="advantageous-circumstance-yes">${game.i18n.localize("SIMPLE.ActionDialog.Yes")}</label>
-          <input type="radio" id="advantageous-circumstance-no" name="advantageous-circumstance" value="no" checked/>
+          <input type="radio" id="advantageous-circumstance-no" name="advantageous-circumstance" value="0" checked/>
           <label for="advantageous-circumstance-no">${game.i18n.localize("SIMPLE.ActionDialog.No")}</label>
         </span>
       </div>
@@ -105,9 +105,9 @@ export class SimpleActorSheet extends ActorSheet {
       <div style="display: flex;justify-content: space-between;">
         <label>${game.i18n.localize("SIMPLE.ActionDialog.OtherPJHelpObject")}</label>
         <span>
-          <input type="radio" id="other-pj-help-object-yes" name="other-pj-help-object" value="yes"/>
+          <input type="radio" id="other-pj-help-object-yes" name="other-pj-help-object" value="1"/>
           <label for="other-pj-help-object-yes">${game.i18n.localize("SIMPLE.ActionDialog.Yes")}</label>
-          <input type="radio" id="other-pj-help-object-no" name="other-pj-help-object" value="no" checked/>
+          <input type="radio" id="other-pj-help-object-no" name="other-pj-help-object" value="0" checked/>
           <label for="other-pj-help-object-no">${game.i18n.localize("SIMPLE.ActionDialog.No")}</label>
         </span>
       </div>
@@ -115,9 +115,9 @@ export class SimpleActorSheet extends ActorSheet {
       <div style="display: flex;justify-content: space-between;">
         <label>${game.i18n.localize("SIMPLE.ActionDialog.OtherPJHelpTrait")}</label>
         <span>
-          <input type="radio" id="other-pj-help-trait-yes" name="other-pj-help-trait" value="yes"/>
+          <input type="radio" id="other-pj-help-trait-yes" name="other-pj-help-trait" value="1"/>
           <label for="other-pj-help-trait-yes">${game.i18n.localize("SIMPLE.ActionDialog.Yes")}</label>
-          <input type="radio" id="other-pj-help-trait-no" name="other-pj-help-trait" value="no" checked/>
+          <input type="radio" id="other-pj-help-trait-no" name="other-pj-help-trait" value="0" checked/>
           <label for="other-pj-help-trait-no">${game.i18n.localize("SIMPLE.ActionDialog.No")}</label>
         </span>
       </div>
@@ -125,7 +125,7 @@ export class SimpleActorSheet extends ActorSheet {
       <hr />
       <div>${game.i18n.localize("SIMPLE.ActionDialog.Fight")}</div>
       <div>
-        <input type="radio" name="fight" id="fight-0" value="0"/>
+        <input type="radio" name="fight" id="fight-0" value="0" checked/>
         <label for="fight-0">0 ${game.i18n.localize("SIMPLE.ActionDialog.Die")}</label>
         <input type="radio" name="fight" id="fight-1" value="-1"/>
         <label for="fight-1">-1 ${game.i18n.localize("SIMPLE.ActionDialog.Die")}</label>
@@ -184,25 +184,14 @@ export class SimpleActorSheet extends ActorSheet {
       if(harms.severe.trim() !== "")
         nbDice--;
 
-      if (html.find("input#use-trait-yes").is(":checked"))
-        nbDice++;
+      const inputNames = ["use-trait", "use-object", "advantageous-circumstance", "other-pj-help-object", "other-pj-help-trait", "fight"];
+      inputNames.forEach(element => {
+        const value = parseInt($('input[name="' + element + '"]:checked').val());
+        if (value !== undefined && !isNaN(value)) {
+          nbDice += value;
+        }
+      });
 
-      if (html.find("input#use-object-yes").is(":checked"))
-        nbDice++;
-
-      if (html.find("input#advantageous-circumstance-yes").is(":checked"))
-        nbDice++;
-
-      if (html.find("input#other-pj-help-object-yes").is(":checked"))
-        nbDice++;
-
-      if (html.find("input#other-pj-help-trait-yes").is(":checked"))
-        nbDice++;
-
-      const fightMalus = $('input[name="fight"]:checked').val();
-      if (fightMalus !== undefined) {
-        nbDice += parseInt(fightMalus);
-      }
 
       if(nbDice > 4)
         nbDice = 4;
