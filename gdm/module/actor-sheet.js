@@ -121,7 +121,21 @@ export class SimpleActorSheet extends ActorSheet {
           <label for="other-pj-help-trait-no">${game.i18n.localize("SIMPLE.ActionDialog.No")}</label>
         </span>
       </div>
-      
+
+      <hr />
+      <div>${game.i18n.localize("SIMPLE.ActionDialog.Fight")}</div>
+      <div>
+        <input type="radio" name="fight" id="fight-0" value="0"/>
+        <label for="fight-0">0 ${game.i18n.localize("SIMPLE.ActionDialog.Die")}</label>
+        <input type="radio" name="fight" id="fight-1" value="-1"/>
+        <label for="fight-1">-1 ${game.i18n.localize("SIMPLE.ActionDialog.Die")}</label>
+        <input type="radio" name="fight" id="fight-2" value="-2"/>
+        <label for="fight-2">-2 ${game.i18n.localize("SIMPLE.ActionDialog.Dice")}</label>
+        <input type="radio" name="fight" id="fight-3" value="-3"/>
+        <label for="fight-3">-3 ${game.i18n.localize("SIMPLE.ActionDialog.Dice")}</label>
+        <input type="radio" name="fight" id="fight-4" value="-4"/>
+        <label for="fight-4">-4 ${game.i18n.localize("SIMPLE.ActionDialog.Dice")}</label>
+      </div>
       <hr />`;
 
     new Dialog({
@@ -184,7 +198,12 @@ export class SimpleActorSheet extends ActorSheet {
 
       if (html.find("input#other-pj-help-trait-yes").is(":checked"))
         nbDice++;
-      
+
+      const fightMalus = $('input[name="fight"]:checked').val();
+      if (fightMalus !== undefined) {
+        nbDice += parseInt(fightMalus);
+      }
+
       if(nbDice > 4)
         nbDice = 4;
 

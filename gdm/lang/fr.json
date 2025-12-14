@@ -74,8 +74,11 @@
   "SIMPLE.ActionDialog.AdvantageousCircumstance": "Y a-t-il une circonstance avantageuse ?",
   "SIMPLE.ActionDialog.OtherPJHelpTrait": "Un autre PJ m'aide avec l'un de ses traits ?",
   "SIMPLE.ActionDialog.OtherPJHelpObject": "Un autre PJ m'aide avec l'un de ses objets ?",
+  "SIMPLE.ActionDialog.Fight": "J'affronte un ennemie, j'ai un malus de :",
   "SIMPLE.ActionDialog.Yes": "Oui",
   "SIMPLE.ActionDialog.No": "Non",
   "SIMPLE.ActionDialog.Success": "Succès",
-  "SIMPLE.ActionDialog.Failure": "Échec"
+  "SIMPLE.ActionDialog.Failure": "Échec",
+  "SIMPLE.ActionDialog.Die": "dé",
+  "SIMPLE.ActionDialog.Dice": "dés"
 }

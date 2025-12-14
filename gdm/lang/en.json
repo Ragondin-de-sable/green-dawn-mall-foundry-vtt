@@ -74,8 +74,12 @@
   "SIMPLE.ActionDialog.AdvantageousCircumstance": "Is there an advantageous circumstance?",
   "SIMPLE.ActionDialog.OtherPJHelpTrait": "Another PC is helping me with one of their traits?",
   "SIMPLE.ActionDialog.OtherPJHelpObject": "Another PC is helping me with one of their objects?",
+  "SIMPLE.ActionDialog.Fight": "I'm fighting an enemy, I have a malus of:",
   "SIMPLE.ActionDialog.Yes": "Yes",
   "SIMPLE.ActionDialog.No": "No",
   "SIMPLE.ActionDialog.Success": "Success",
-  "SIMPLE.ActionDialog.Failure": "Failure"
+  "SIMPLE.ActionDialog.Failure": "Failure",
+  "SIMPLE.ActionDialog.Die": "die",
+  "SIMPLE.ActionDialog.Dice": "dice"
+
 }
