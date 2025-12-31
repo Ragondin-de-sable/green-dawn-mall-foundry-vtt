@@ -29,6 +29,7 @@
     "minimum": "10",
     "verified": "11"
   },
-  "manifest": "https://github.com/Ragondin-de-sable/green-dawn-mall-foundry-vtt/tree/main/system.json",
-  "download": "https://github.com/Ragondin-de-sable/green-dawn-mall-foundry-vtt/archive/refs/tags/1.0.1.zip"
+  "background": "systems/gdm/images/accueil.webp",
+  "manifest": "https://raw.githubusercontent.com/Ragondin-de-sable/green-dawn-mall-foundry-vtt/refs/heads/main/system.json",
+  "download": "https://github.com/Ragondin-de-sable/green-dawn-mall-foundry-vtt/archive/refs/tags/1.0.2.zip"
 }
