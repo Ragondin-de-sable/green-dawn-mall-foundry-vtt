@@ -37,3 +37,6 @@ La sauvegarde est automatique.
 - Il n'y a pas de génération de place/magasin/rencontre
 - Il n'y a pas de fiche pour un _PJ étrange_
 - Les objets ne se cassent pas automatiquement
+
+# Note technique
+Ce système est basé sur le [simple worldbuilding](https://github.com/foundryvtt/worldbuilding)
