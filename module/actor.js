@@ -40,7 +40,7 @@ export class SimpleActor extends Actor {
 
     // Copy the actor's system data
     const data = this.toObject(false).system;
-    const shorthand = game.settings.get("gdm", "macroShorthand");
+    const shorthand = game.settings.get("worldbuilding", "macroShorthand");
     const formulaAttributes = [];
     const itemAttributes = [];
 
